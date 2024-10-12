@@ -8,7 +8,7 @@ public class getOtpUsingEmail {
         System.out.println("Start reading...");
 
         String host = "pop.gmail.com";// change accordingly
-        String mailStoreType = "pop3";
+      //   String mailStoreType = "pop3";
         String username = "jpdhinesh2002@gmail.com";// change accordingly
         String password = "hffi ddmx udjj hfeu";// change accordingly
         
@@ -22,16 +22,12 @@ public class getOtpUsingEmail {
             properties.put("mail.pop3.starttls.enable", "true");
             Session emailSession = Session.getDefaultInstance(properties);
         
-            //create the POP3 store object and connect with the pop server
             Store store = emailSession.getStore("pop3s");
       
             store.connect(host, username, password);
-      
-            //create the folder object and open it
             Folder emailFolder = store.getFolder("INBOX");
             emailFolder.open(Folder.READ_ONLY);
       
-            // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
             System.out.println("messages.length---" + messages.length);
       

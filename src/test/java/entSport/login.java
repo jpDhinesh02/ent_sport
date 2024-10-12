@@ -20,6 +20,7 @@ public class login {
         try {
             Components.implicitlyWait(driver, 60);
             loginElements loginEle = new loginElements(driver);
+            loginEle.profileMenu().click();
             String mobileNumber = jsonUtilites.getJsonValue(0, jsonPath, "users", "mobileNumber");
             String password = jsonUtilites.getJsonValue(0, jsonPath, "users", "password");
             loginEle.mobileNumber().sendKeys(mobileNumber);
@@ -49,10 +50,12 @@ public class login {
             // driver.findElement(By.xpath("//button[1]")).click();
             extentReports.logPass("Successfully reset password on forget password flow");
         } catch (Exception e) {
-            extentReports.logFail(driver, "Forget_Ent", "Failed to reset password on forget password flow");
+            extentReports.logFail(driver, "Forget_Flow", "Failed to reset password on forget password flow");
         }
 
     }
+
+        // ! I'm not lazy, I’m just in a 'try-catch' loop.
 
     public void logout(WebDriver driver) {
         driver.findElement(By.xpath("//button[text()='Logout']")).click();
