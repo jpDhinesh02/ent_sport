@@ -12,6 +12,6 @@ public class dummy {
         System.out.println(
                 "getforgotPasswordMobileOtp>>>>" + getPassword.getForgotPasswordMobileOtp("dhinesh.p@knowledgeq.com"));
         System.out.println("getpassword>>>>" + getPassword.getUserPassword("dhinesh.p@knowledgeq.com"));
-        sendMail.sendMailToUser("dhinesh.p@knowledgeq.com");
+        // sendMail.sendMailToUser("dhinesh.p@knowledgeq.com");
     }
 }

@@ -1,4 +1,3 @@
 @echo off
-cd C:\Users\Dhinesh.P\OneDrive - KNOWLEDGEQ INTERACTIVE CONSULTANCY SERVICE PVT LTD\Desktop\Java\dvtraining\src\test\java\mailer
-node server.js
+cd C:\Users\Admin Is User\Desktop\Java\ent_sport\src\test\java\mailer\server.js
 pause

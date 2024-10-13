@@ -19,7 +19,8 @@ public class Allrunner {
         // login.forgetPassword(driver);
         // login.loginWeb(driver);
         extentReports.flush();
-        sendMail.sendMailToUser("j9894330583@gmail.com");
+        // sendMail.sendMailToUser("rameshpersonal99@gmail.com,j9894330583@gmail.com,naveenkumarrnk2701@gmail.com");
+        sendMail.sendMailToUser("j9894330583@gmail.com", driver);
     }
 
 }

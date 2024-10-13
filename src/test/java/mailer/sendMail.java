@@ -1,28 +1,34 @@
 package mailer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
 import io.restassured.RestAssured;
 import io.restassured.config.SSLConfig;
 import io.restassured.response.Response;
-import utility.Components;
 import utility.extentReports;
 
 public class sendMail {
 
-    public static void sendMailToUser(String toMail) throws IOException, InterruptedException {
-        WebDriver driver = Components.startChromeHeadless();
+    public static void sendMailToUser(String toMail, WebDriver driver) throws IOException, InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.open();");
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
         runBatchFile();
         String BASE_URL = "http://localhost:3000/mail";
         driver.get(BASE_URL);
-
-        while (driver.findElement(By.xpath("//pre[text()='Cannot GET /mail']")).isDisplayed()) {
+        boolean check = false;
+        while (!check) {
             try {
-               break;
+                driver.findElement(By.xpath("//pre[text()='Cannot GET /mail']"));
+                check = true;
+                break;
             } catch (Exception e) {
+                check = false;
                 Thread.sleep(2000);
             }
         }
@@ -50,6 +56,7 @@ public class sendMail {
                 .extract()
                 .response();
         String responseBody = response.asString();
+        System.out.println(">>>" + responseBody);
     }
 
     private static void runBatchFile() {
